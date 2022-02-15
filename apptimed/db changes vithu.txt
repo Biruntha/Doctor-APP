@@ -1,0 +1,17 @@
+CREATE TABLE `order_feedback` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user` bigint unsigned NOT NULL,
+  `order` bigint unsigned NOT NULL,
+  `is_done` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `visit_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `other_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `suggestions` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_feedback_user_index` (`user`),
+  KEY `order_feedback_order_index` (`order`),
+  CONSTRAINT `order_feedback_order_foreign` FOREIGN KEY (`order`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_feedback_user_foreign` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,16 @@
+INSERT INTO permissions(`name`,`display_name`,`type`) VALUES("can-view-activity-log","Can view activity log","Activity_Log")
+
+ALTER TABLE `activity_logs` ADD order_id INTEGER NULL;
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `perform_by` int(11) DEFAULT NULL,
+  `to_user` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `notification` text DEFAULT NULL,
+  `is_read` tinyint(1) DEFAULT 0,
+  `read_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)

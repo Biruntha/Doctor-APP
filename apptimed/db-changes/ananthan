@@ -1,0 +1,11 @@
+CREATE TABLE `jobs` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `queue` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL,
+  `attempts` TINYINT(3) UNSIGNED NOT NULL,
+  `reserved_at` INT(10) UNSIGNED DEFAULT NULL,
+  `available_at` INT(10) UNSIGNED NOT NULL,
+  `created_at` INT(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `jobs_queue_index` (`queue`)
+)
